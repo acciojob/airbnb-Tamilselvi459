@@ -70,7 +70,8 @@ public class HotelManagementRepository {
             booking.setBookingId(id);
             booking.setAmountToBePaid(cash);
             bookDB.put(id,booking);
-            bookbyadhar.put(booking.getBookingAadharCard() , b);
+
+            bookbyadhar.put(booking.getBookingAadharCard() , bookbyadhar.getOrDefault(booking.getBookingAadharCard(),0)+1);
             return cash;
 
         }
