@@ -42,7 +42,7 @@ public class HotelManagementController {
         //You need to add a User Object to the database
         //Assume that user will always be a valid user and return the aadharCardNo of the user
     Integer ans = hotelmanagementservice.addUser(user);
-       return null;
+       return ans;
     }
 
     @GetMapping("/get-hotel-with-most-facilities") //3
@@ -52,7 +52,7 @@ public class HotelManagementController {
         //Incase there is a tie return the lexicographically smaller hotelName
         //Incase there is not even a single hotel with atleast 1 facility return "" (empty string)
    String ans = hotelmanagementservice.getHotelWithMostFacilities();
-        return null;
+        return ans;
     }
 
     @PostMapping("/book-a-room") //4
