@@ -33,12 +33,9 @@ public class HotelManagementRepository {
         hotelfDB.put(hotel.getHotelName(),ans);
         return true;
     }
-    public boolean addUser(User user){
-        if(userDB.containsKey(user.getaadharCardNo())){
-            return false;
-        }
-        userDB.put(user.getaadharCardNo() , user);
-        return true;
+    public Integer addUser(User user){
+       userDB.put(user.getaadharCardNo() , user);
+       return user.getaadharCardNo();
     }
     public String small(String a , String b){
         if(a.compareTo(b) == 0) return a;

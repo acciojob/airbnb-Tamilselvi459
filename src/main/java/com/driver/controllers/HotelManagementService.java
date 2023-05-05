@@ -12,22 +12,19 @@ import java.util.List;
 @Service
 public class HotelManagementService {
 
-    @Autowired
-    HotelManagementRepository hotelmanagementrepository;
+
+    HotelManagementRepository hotelmanagementrepository = new HotelManagementRepository();
 
     public String addHotel(Hotel hotel) {
-        if(hotel.getHotelName()==null || hotel==null) return "";
+        if(hotel.getHotelName()==null || hotel==null) return "FAILURE";
        if( hotelmanagementrepository.addHotel(hotel))
            return "SUCCESS";
 
-       return "";
+       return "FAILURE";
     }
 
     public Integer addUser(User user) {
-        if(hotelmanagementrepository.addUser(user)){
-            return user.getaadharCardNo();
-        }
-        return 0;
+        return hotelmanagementrepository.addUser(user);
     }
 
     public String getHotelWithMostFacilities() {
