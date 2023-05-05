@@ -16,18 +16,18 @@ public class HotelManagementService {
     HotelManagementRepository hotelmanagementrepository;
 
     public String addHotel(Hotel hotel) {
-        if(hotel.getHotelName()==null || hotel==null) return "FAILURE";
+        if(hotel.getHotelName()==null || hotel==null) return "";
        if( hotelmanagementrepository.addHotel(hotel))
            return "SUCCESS";
 
-       return "FAILURE";
+       return "";
     }
 
     public Integer addUser(User user) {
         if(hotelmanagementrepository.addUser(user)){
             return user.getaadharCardNo();
         }
-        return null;
+        return 0;
     }
 
     public String getHotelWithMostFacilities() {
