@@ -4,6 +4,7 @@ import com.driver.model.Booking;
 import com.driver.model.Facility;
 import com.driver.model.Hotel;
 import com.driver.model.User;
+import com.driver.service.HotelManagementService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +22,17 @@ import java.util.UUID;
 @RequestMapping("/hotel")
 public class HotelManagementController {
 
+    HotelManagementService hotelService = new HotelManagementService();
+
+    public HotelManagementController() {
+
+    }
+
     @PostMapping("/add-hotel")
     public String addHotel(@RequestBody Hotel hotel){
+
+        Hotel hotel1 = new Hotel(hotel.getHotelName(),hotel.getAvailableRooms(),hotel.getFacilities(),hotel.getPricePerNight());
+        String result = hotelService.addHotel(hotel1);
 
         //You need to add an hotel to the database
         //incase the hotelName is null or the hotel Object is null return an empty a FAILURE
@@ -30,7 +40,7 @@ public class HotelManagementController {
         //in all other cases return SUCCESS after successfully adding the hotel to the hotelDb.
 
 
-        return null;
+        return result;
     }
 
     @PostMapping("/add-user")
